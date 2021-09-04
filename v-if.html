@@ -5,16 +5,37 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <title>Vue模板</title>
+  <title>v-if</title>
 </head>
 
 <body>
 
+  <div id="app">
+    <p v-if = "true">我是一个p标签</p>
+    <p v-if= "isShow">我是一个P标签</p>
+    <p v-show= "isShow">我是一个P1标签</p>
+    <p v-if="3<2">我是一个p标签</p>
+    <h2 v-if="temperature>=35">热死了</h2>
+    <input type="button" value="切换" @click="toggleIsShow">
+  </div>
  
 
   <!-- 开发环境版本，包含了有帮助的命令行警告 -->
   <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-
+  <script>
+    var app = new Vue({
+      el:"#app",
+      data:{
+        isShow:true,
+        temperature:30
+      },
+      methods:{
+        toggleIsShow:function(){
+          this.isShow = !this.isShow;
+        }
+      }
+    })
+  </script>
 
 </body>
 
