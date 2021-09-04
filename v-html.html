@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>v-html</title>
+</head>
+
+<body>
+  <div id="app">
+    <p v-html="content"></p>
+    <p v-text="content"></p>
+    <p v-html="content2"></p>  <!--html会解析标签，仅仅只是文本的话和v-text一样-->
+    <p v-text="content2"></p>
+  </div>
+
+ 
+
+  <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+<script>
+  var app = new Vue({
+    el:"#app",
+    data:{
+      content:"小飞同学",
+      content2:"<a href='http:www.nihao.com'>你好网站</a>"
+    }
+  })
+</script>
+
+</body>
+
+</html>
