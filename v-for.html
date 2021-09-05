@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue模板</title>
+</head>
+
+<body>
+  <div id="app">
+    <li v-for="item in arr">发达地区：{{item}}</li>
+    <!-- 索引 -->
+    <li v-for="(item,index) in arr">索引：{{index+1}}   地址:{{item}}</li>
+
+    <!-- 对象 -->
+    <h2 v-for="item in vegetables" v-bind:title="item.name">
+      {{item.name}}
+    </h2>
+    <input type="button" value="添加数据" @click="add">
+    <input type="button" value="移除数据" @click="remove">
+  </div>
+
+ 
+
+  <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+  <script>
+    var app = new Vue({
+      el:"#app",
+      data:{
+        arr:["北京","南京","上海","广东"],
+        //对象数组
+        vegetables:[
+          {name:"西蓝花炒蛋"},
+          {name:"蛋炒西蓝花"}
+        ]
+      },
+      methods:{
+        add:function(){
+          this.vegetables.push({name:"花菜炒蛋"});
+        },
+        remove:function(){
+          this.vegetables.shift();
+        }
+      }
+    })
+  </script>
+
+</body>
+
+</html>

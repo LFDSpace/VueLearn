@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Vue模板</title>
+</head>
+
+<body>
+
+  <div id="app">
+    <h3>小飞记事本</h3>
+    <input type="text" v-model="message" @keyup.enter="addM" placeholder="请输入任务"  > 
+     <li v-for="(item,index) in list">
+         {{item}}  <input type="button" value="删除" @click="remove(index)">
+        </li>
+     <p v-if="list.length!=0">总数量：{{list.length}}   
+       <input type="button" value="清空全部" @click="clear"></p>
+    
+  </div>
+
+ 
+
+  <!-- 开发环境版本，包含了有帮助的命令行警告 -->
+  <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+
+  <script>
+    var app = new Vue({
+      el:"#app",
+      data:{
+          list:["吃饭饭","睡觉觉","洗澡澡"],
+          message:""
+      },
+      methods:{
+        addM:function(){
+          this.list.push(this.message);
+        },
+        remove:function(p1){
+          this.list.shift(p1);
+        },
+        clear:function(){
+            this.list=[];
+        }
+
+      }
+    })
+  </script>
+</body>
+
+</html>
